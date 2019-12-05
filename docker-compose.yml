@@ -1,0 +1,63 @@
+version: '3.0'
+services:
+  #########################
+  # Frontend
+  #########################
+  reverseproxy:
+    image: reverseproxy:latest
+    ports:
+      - 80:80
+  grafana: # username: admin   passwort: admin
+    image: grafana/grafana
+    volumes:
+      - /srv/grafana/data:/var/lib/grafana
+    ports:
+      - 3000:3000
+  frontend:
+    image: frontend:latest
+  #########################
+  # Backend
+  #########################
+  backend-primzahlen:
+    image: backend-primzahlen:latest
+  backend-fibonacci:
+    image: backend-fibonacci:latest
+  prometheus:
+    image: prometheus:latest
+    volumes:
+      - /srv/prometheus/data:/prometheus
+    ports:
+      - 9090:9090
+  #########################
+  # Aggregator
+  #########################
+  node-exporter:       
+    image: prom/node-exporter
+    ports:
+      - '9100:9100'
+    volumes:       
+      - /proc:/host/proc:ro       
+      - /sys:/host/sys:ro       
+      - /:/rootfs:ro    
+      - /etc/hostname:/etc/nodename:ro
+    command:       
+      - '--path.procfs=/host/proc'       
+      - '--path.sysfs=/host/sys'       
+      - '--path.rootfs=/host'       
+      - '--collector.filesystem.ignored-mount-points="^(/rootfs|/host|)/(sys|proc|dev|host|etc)($$|/)"'       
+      - '--collector.filesystem.ignored-fs-types="^(sys|proc|auto|cgroup|devpts|ns|au|fuse\.lxc|mqueue)(fs|)$$"'
+  cadvisor:
+    image: google/cadvisor:latest
+    ports:
+      - '8080:8080'
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 10.90.200.0/24
+

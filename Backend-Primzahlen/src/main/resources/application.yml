@@ -1,0 +1,16 @@
+server:
+  port: 60001
+spring:
+  main:
+    banner-mode: "off"
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+connection-config:
+  https: true
+management:
+  endpoints:
+    web:
+      exposure:
+        #https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html
+        include: ["info", "health", "loggers", "flyway", "env", "configprops", "scheduledtasks","metrics", "prometheus"]
+      base-path: /actuator

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Primzahlen Berechnung</h2>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="primLimit">Limit</label>
+              <input type="number" class="form-control" id="primLimit" [(ngModel)]="primLimit">
+              <button type="submit" class="btn btn-success" (click)="onPrimSubmit()">Berechnen</button>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Fibonaccizahlen Berechnung</h2>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="fibonacciLimit">Limit</label>
+              <input type="number" class="form-control" id="fibonacciLimit" [(ngModel)]="fibonacciLimit">
+              <button type="submit" class="btn btn-success" (click)="onFibonacciSubmit()">Berechnen</button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="list">
+        <cdk-virtual-scroll-viewport  style="height: 500px" itemSize="20" >
+          <ng-container *cdkVirtualFor="let n of primList">
+            <li> {{n}} </li>
+          </ng-container>
+        </cdk-virtual-scroll-viewport>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <ul class="list">
+        <cdk-virtual-scroll-viewport  style="height: 500px" itemSize="20" >
+          <ng-container *cdkVirtualFor="let i of fibonacciList">
+            <li> {{i}} </li>
+          </ng-container>
+        </cdk-virtual-scroll-viewport>
+      </ul>
+    </div>
+  </div>
+</div>

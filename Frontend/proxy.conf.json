@@ -1,0 +1,22 @@
+{
+  "/prim":
+  {
+    "target": "http://localhost:60001",
+    "secure": false,
+    "pathRewrite": {
+      "^/prim": ""
+    },
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/fibonacci":
+  {
+    "target": "http://localhost:60002",
+    "secure": false,
+    "pathRewrite": {
+      "^/fibonacci": ""
+    },
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
