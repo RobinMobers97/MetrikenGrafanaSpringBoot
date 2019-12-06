@@ -58,7 +58,7 @@ Um die Umgebung zu starten muss nur der Befehl **docker-compose up** im Main Dir
 
 ## Umgang mit Frontend und Grafana
 
-Auf das Frontend kann über **localhost** zugegegriffen werden. Dort können Primzahlen und Fibonaccizahlen bis zu einem eingegeben Limit berechnet werden. Die Berechnung übernehmen die jeweiligen Backend Services.
+Auf das Frontend kann über **localhost** zugegegriffen werden. Dort können Primzahlen und Fibonaccizahlen bis zu einem eingegebenen Limit berechnet werden. Die Berechnung übernehmen die jeweiligen Backend Services.
 Über **localhost:9090** kann auf die Prometheus Oberfläche zugegriffen werden.
 
 Für das Beispiel wurde ein Grafana Dashboard bereits angelegt.
